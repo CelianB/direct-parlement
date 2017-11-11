@@ -1,5 +1,4 @@
 (function(ns){
-
   ns.accentMap = {
     'á': 'a', 'à': 'a', 'â': 'a',
     'À': 'a', 'Â': 'a',
@@ -19,7 +18,6 @@
       ret += ns.accentMap[term.charAt(i)] || term.charAt(i);
     return ret;
   };
-
   ns.departements = {
      "Ain": "de l'",
      "Aisne": "de l'",
@@ -144,7 +142,6 @@
   ns.singleParl = function(type, sexe) {
     return (type === "deputes" ? "Député" + (sexe === "F" ? "e" : "") : "Sénat" + (sexe === "F" ? "rice" : "eur"));
   };
-
   ns.deputes = {};
   ns.deputesAr = [];
   ns.senateurs = {};
@@ -171,7 +168,7 @@
   };
 
   ns.downloadParls = function(type){
-    $.getJSON('//www.nos'+type+'.fr/'+type+'/enmandat/json', function(data){
+    $.getJSON('https://www.nos'+type+'.fr/'+type+'/enmandat/json', function(data){
       data[type].forEach(function(parl){
         var d = parl.depute || parl.senateur;
         d.display = d.nom + ' (' + d.groupe_sigle + ')';
@@ -298,6 +295,8 @@
     }
     $('#text, #autres').show();
     if (/<b>/.test(extra_mandats)) $('#cumul img').show();
+
+    ns.animMap(ns.parl.num_deptmt,ns.parl.num_circo);
   };
 
   ns.randomMP = function(type){
@@ -507,7 +506,14 @@
       change: updateColor
     });
   };
-     
+
+  ns.animMap = function(num_deptmt,num_circo){
+    var params=params="refine.ref="+num_deptmt+'&';
+    if(num_circo!=null)
+        params="refine.ref="+num_deptmt+'-'+num_circo+'&';
+    document.getElementById("map").innerHTML=
+    '<iframe src="https://public.opendatasoft.com/explore/embed/dataset/circonscriptions-legislatives-2017/map/?'+params+'dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6ImNpcmNvbnNjcmlwdGlvbnMtbGVnaXNsYXRpdmVzLTIwMTciLCJvcHRpb25zIjp7InEiOiI4OCIsImJhc2VtYXAiOiJqYXdnLnN0cmVldHMiLCJsb2NhdGlvbiI6IjgsNDguMDAyNzksNi4xOTA4In19LCJjaGFydHMiOlt7InR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiQ09VTlQiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZSwiY29sb3IiOiIjMkMzRjU2In1dLCJ4QXhpcyI6InJlZiIsIm1heHBvaW50cyI6NTAsInNvcnQiOiIifV0sInRpbWVzY2FsZSI6IiJ9&location=6,46.48326,0.802&basemap=mb-931882&static=false&datasetcard=true" width="800" height="600" frameborder="0"></iframe>';
+  }
   $(document).ready(function(){
     ns.spectrum("metasColor", "metas", "#00C400");
     ns.spectrum("widgetColor", "widget", "#FFFFFF");
