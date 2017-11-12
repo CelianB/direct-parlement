@@ -515,7 +515,7 @@
     var myIframe = document.getElementById('IframeMap');
     myIframe.onload = function () {
       myIframe.style.display='';
-      myIframe.scrollTop(-100);
+      myIframe.contentWindow.scrollTop(-100);
     }
 }
 
