@@ -511,7 +511,7 @@
     var params=params="refine.ref="+num_deptmt;
     if(num_circo!=null)
         params="refine.ref="+num_deptmt+'-'+num_circo;
-    document.getElementById("map").innerHTML='<iframe src="https://public.opendatasoft.com/explore/embed/dataset/circonscriptions-legislatives-2017/map/?'+params+'&basemap=mb-931882" width="800" height="600" frameborder="0"></iframe>';
+    document.getElementById("map").innerHTML='<iframe src="https://public.opendatasoft.com/explore/embed/dataset/circonscriptions-legislatives-2017/map/?'+params+'&basemap=mb-931882" width="800" height="600" position: relative; left: -100px; top: -100px></iframe>';
 }
 
   $(document).ready(function(){
