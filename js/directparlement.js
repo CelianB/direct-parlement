@@ -513,6 +513,7 @@
         params="refine.ref="+num_deptmt+'-'+num_circo;
     document.getElementById("map").innerHTML='<iframe src="https://public.opendatasoft.com/explore/embed/dataset/circonscriptions-legislatives-2017/map/?'+params+'&basemap=mb-931882" width="800" height="600" frameborder="0"></iframe>';
 }
+
   $(document).ready(function(){
     ns.spectrum("metasColor", "metas", "#00C400");
     ns.spectrum("widgetColor", "widget", "#FFFFFF");
