@@ -308,7 +308,7 @@
     ns.parl = null;
     $('#ministre').val('');
     $('#graph').attr('src', '');
-    $('#text, #autres, #groupe img, #cumul img, #graph, #widget img.logo,#map').hide();
+    $('#text, #autres, #groupe img, #cumul img, #graph, #widget img.logo,#IframeMap').hide();
   };
 
   ns.setQagMP = function(type, rowid){
