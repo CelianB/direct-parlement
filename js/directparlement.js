@@ -514,10 +514,8 @@
     document.getElementById("map").innerHTML='<iframe id="IframeMap" src="https://public.opendatasoft.com/explore/embed/dataset/circonscriptions-legislatives-2017/map/?'+params+'&basemap=mb-931882" width="800" height="600" style="display:none;position: relative;left:-40px;top:-60px;"></iframe>';
     var myIframe = document.getElementById('IframeMap');
     myIframe.onload = function () {
-      setTimeout(function(){
-        myIframe.style.display='';
-        myIframe.scrollTop(-500);
-      }, 1000);
+      myIframe.style.display='';
+      myIframe.scrollTop(-100);
     }
 }
 
